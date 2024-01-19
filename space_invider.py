@@ -17,9 +17,6 @@ pygame.display.set_icon(icon)
 # Background image
 backgroungImg = pygame.image.load("background.png")
 
-#Background sound
-mixer.music.load("background.wav")
-mixer.music.play(-1) #play background music on loop
 
 # defining our player
 player_icon = pygame.image.load('player.png')
@@ -44,7 +41,7 @@ def game_over():
 
 def meezan(x,y):
     font2 = pygame.font.Font('freesansbold.ttf',16)
-    score = font2.render("Developed by Meezan malik",True,(255,255,255))
+    score = font2.render("Developed by Sivaeva Anastasia",True,(255,255,255))
     screen.blit(score,(x,y))
 
 def player(x, y):
@@ -117,8 +114,6 @@ while running:
 
             if event.key == pygame.K_SPACE:
                 if bullet_state is "ready":
-                    bullet_sound = mixer.Sound("laser.wav")
-                    bullet_sound.play()
                     bulletX = playerX
                     bullet_state = "fired"
 
@@ -154,7 +149,6 @@ while running:
         # Collision
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            mixer.Sound("explosion.wav").play()
             bulletY = 480
             bullet_state = "ready"
             score_value += 1
